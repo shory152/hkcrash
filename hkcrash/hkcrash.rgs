@@ -1,0 +1,11 @@
+HKCR
+{
+	NoRemove AppID
+	{
+		'%APPID%' = s 'hkcrash'
+				'hkcrash.EXE'
+				{
+			val AppID = s '%APPID%'
+		}
+	}
+}

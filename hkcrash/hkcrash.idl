@@ -1,0 +1,17 @@
+// hkcrash.idl : hkcrash 的 IDL 源
+//
+
+// 此文件将由 MIDL 工具处理以
+// 产生类型库(hkcrash.tlb)和封送处理代码。
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	uuid(BEFCDA64-D3C9-42EA-A9F8-3D11BA957806),
+	version(1.0)	
+]
+library hkcrashLib
+{
+	importlib("stdole2.tlb");
+};

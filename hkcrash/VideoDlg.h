@@ -112,7 +112,16 @@ private:
 		if (hmod == NULL)
 			errexit(L"can not load HCNetSDK.dll");
 
-		NET_DVR_Init = GetProcAddress(hmod, "NET_DVR_Init");
+		HMODULE hccore = GetModuleHandle(L"HCCore.dll");
+		TCHAR buf[128] = { 0 };
+		_sntprintf_s(buf, 128, _T("%08x\r\n"), (DWORD)hccore);
+		TCHAR oldAddr[1024];
+		UINT oldLen = ::GetDlgItemText(this->GetParent(), IDC_ADDR, oldAddr, 1024);
+		StrCat(oldAddr, buf);
+		::SetDlgItemText(this->GetParent(), IDC_ADDR, oldAddr);
+		::UpdateWindow(::GetDlgItem(this->GetParent(), IDC_ADDR));
+
+		NET_DVR_Init = (NET_DVR_Init_P)GetProcAddress(hmod, "NET_DVR_Init");
 		if (NET_DVR_Init == NULL)
 			errexit(L"can not get function");
 		

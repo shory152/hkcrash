@@ -114,7 +114,7 @@ private:
 
 		HMODULE hccore = GetModuleHandle(L"HCCore.dll");
 		TCHAR buf[128] = { 0 };
-		_sntprintf_s(buf, 128, _T("%08x\r\n"), (DWORD)hccore);
+		_sntprintf_s(buf, 128, _T("%p\r\n"), (void *)hccore);
 		TCHAR oldAddr[1024];
 		UINT oldLen = ::GetDlgItemText(this->GetParent(), IDC_ADDR, oldAddr, 1024);
 		StrCat(oldAddr, buf);
